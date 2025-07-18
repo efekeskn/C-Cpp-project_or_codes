@@ -1,42 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-//fiels in c programing languahe
-// sftorage of the data var is temporary such data is lost a program terminates 
-// file are used for permanent retention data 
-// each file and with an and of file marhes 
-// when a file append a strea is a ssoriated with for
 
-/* 
-r	Okuma için bir metin dosyası açar. Dosya mevcut olmalıdır.
-w	Yazma için bir metin dosyası oluşturur. Aynı isimde bir dosya zaten mevcut ise, içeriği silinir.
-a	Bir metin dosyasını ekleme yapmak için açar. Dosya yok ise oluşturulur.
-r+	Okuma ve yazma için bir metin dosyası açar. Dosya mevcut olmalıdır.-->1. read than write
-w+	Okuma ve yazma için bir metin dosyası oluşturur.-->write  than read 
-a+	Okuma ve ekleme için bir metin dosyası açar.-->doesnt matter 
-rb	Okuma için bir ikili sistem dosyası açar. Dosya mevcut olmalıdır.
-wb	Yazma için bir ikili sistem dosyası oluşturur. Aynı isimde bir dosya zaten mevcut ise, içeriği silinir.
-ab	Bir ikili sistem dosyasını ekleme yapmak için açar. Dosya yok ise oluşturulur.
-r+b	Okuma ve yazma için bir ikili sistem dosyası açar. Dosya mevcut olmalıdır.
-w+b	Okuma ve yazma için bir ikili sistem dosyası oluşturur.
-a+b	Okuma ve ekleme için bir ikili sistem dosyası açar.*/
-    
+typedef struct ogrenci{
+    char isim[20];
+    char soyisim[20];
+    int no;
+    int notlar[3];
+} ogrenci;
+
+
+
 
 int main()
 {
-    FILE *fp;
-    if((fp=fopen("file.txt","a"))==NULL)
-        printf("dosya açıldı");
+    FILE *fptr=fopen("efe.txt","r");
+    ogrenci ogrenciler[3];
+    int i=0;
     
-    while(!feof(fp)){// EOF ne işe yaaraar
-    
-        printf("%c",*fp);
-        break;}
+    while(i<3)
+    {
+        fscanf(fptr,"%s%s%d%d%d%d",ogrenciler[i].isim,ogrenciler[i].soyisim,&ogrenciler[i].no,&ogrenciler[i].notlar[0],&ogrenciler[i].notlar[1],&ogrenciler[i].notlar[2]);
+        i++;
         
-    FILE *fp1;
+    }
     
+    for(int j=0;j<3;j++)
+    {
+        printf("Ad: %s\n",ogrenciler[j].isim);
+        printf("SoyAd: %s\n",ogrenciler[j].soyisim);
+        printf("ogrenci no:%d\n",ogrenciler[j].no);
+        printf("notlar: %d  %d  %d",ogrenciler[j].notlar[0],ogrenciler[j].notlar[1],ogrenciler[j].notlar[2]);
         
+        printf("\n\n\n");
+    }
     
-    exit (1);
+    
+    
+    
+
     return 0;
 }
