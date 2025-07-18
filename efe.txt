@@ -1,6 +1,12 @@
-Bu bir metin dosyasıdır.
-Bu dosya içinde bazı satırlar vardır.
-Bazı satırların başında boşluk karakterleri bulunur.
-   Bu satırın başında üç boşluk karakteri var.
- Bu satırda ise sadece bir boşluk karakteri var.
-  Son satırda iki boşluk karakteri var.
+fprintf(): Dosyaya biçimlendirilmiş veri yazmak için kullanılır.    
+    int fprintf(FILE *stream, const char *format, ...) şeklinde kullanılır.23 34 45 
+fscanf(): Dosyadan biçimlendirilmiş veri okumak için kullanılır.
+    int fscanf(FILE *stream, const char *format, ...) şeklinde kullanılır.
+fgetc(): Dosyadan bir karakter okumak için kullanılır. 
+    int fgetc(FILE *stream) şeklinde kullanılır. 56 
+fputc(): Dosyaya bir karakter yazmak için kullanılır. 667 
+    int fputc(int character, FILE *stream) şeklinde kullanılır.54 
+fgets(): Dosyadan bir satır okumak için kullanılır. 664
+    char 12233 *fgets(char *str, int n, FILE *stream) şeklinde kullanılır.
+fputs(): Dosyaya bir satır yazmak için kullanılır. 
+    int fputs(const char *str, FILE *stream) şeklinde kullanılır.
