@@ -1,3 +1,6 @@
-Ali Can 123456 85 90 75
-Ayşe Yılmaz 654321 70 65 80
-Mehmet Demir 987654 60 75 85
+Bu bir metin dosyasıdır.
+Bu dosya içinde bazı satırlar vardır.
+Bazı satırların başında boşluk karakterleri bulunur.
+   Bu satırın başında üç boşluk karakteri var.
+ Bu satırda ise sadece bir boşluk karakteri var.
+  Son satırda iki boşluk karakteri var.
