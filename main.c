@@ -1,38 +1,54 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
-/*
-fprintf(): Dosyaya biçimlendirilmiş veri yazmak için kullanılır.    
-    int fprintf(FILE *stream, const char *format, ...) şeklinde kullanılır.
-fscanf(): Dosyadan biçimlendirilmiş veri okumak için kullanılır.
-    int fscanf(FILE *stream, const char *format, ...) şeklinde kullanılır.
-fgetc(): Dosyadan bir karakter okumak için kullanılır. 
-    int fgetc(FILE *stream) şeklinde kullanılır.
-fputc(): Dosyaya bir karakter yazmak için kullanılır. 
-    int fputc(int character, FILE *stream) şeklinde kullanılır.
-fgets(): Dosyadan bir satır okumak için kullanılır. 
-    char *fgets(char *str, int n, FILE *stream) şeklinde kullanılır.
-fputs(): Dosyaya bir satır yazmak için kullanılır. 
-    int fputs(const char *str, FILE *stream) şeklinde kullanılır.
-*/
+// yazılan kelimeyi ve cümleyi tersten yazdırma
+void kelimeleriterstenyazdir(char a[])
+{
+    int b,c;
+    b=strlen(a);
+    for(c=b;c>=0;c--)
+    {
+        if(a[c]==' ' || c==0)
+        {
+            for(int i=c;i<b;i++)
+            {
+                printf("%c",a[i]);
+            }
+            b=c;
+        }
+    }
+}
 
+void cumleyiterstenyazdir(char a[])
+{
+    int c=strlen(a);
+    for(;c>0;c--)
+    {
+        printf("%c",a[c-1]);
+    }
+}
 
 int main()
 {
-    FILE* fptr=fopen("efe.txt","r");
+    char cumle[100];
+    int a;
     
-    int max=0;
-    char num[20];
+    printf("lutfen cumlenizi yaziniz:");
+    fgets(cumle,100,stdin);
     
+    printf("lutfen yapmak istediginiz işlemi giriniz: kelimeleri tersten yazdır için '1' cumleyi tersten yazdırmak için '2' :" );
+    scanf("%d",&a);
     
-    while(fscanf(fptr, "%s", num) != EOF)
+    if(a==1)
     {
-        int a=atoi(num);
-        if(a>max)
-            max=a;
-        
+        kelimeleriterstenyazdir(cumle);
+    }    
+    else if(a==2)
+    {
+       cumleyiterstenyazdir(cumle);
     }
-    printf("%d",max);
     
+    
+    return 0;
 }
