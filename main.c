@@ -1,51 +1,58 @@
 #include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
-#include <string.h>
-#define student struct students
-//ogrenci kayit uygulaması;
 
-struct students{
+int kbasamaklı(int a)
+{
+    int b;
+    while(a>0)
+    {
+        a/=10;
+        b++;
+    }
+    return b;
     
-    char *isim;
-    char *soyisim;
-    int numara;
-    int notu;
-};
+}
+
+int  basamaklarvekaresi(int a,int b)
+{
+    int d[b],c=b;
+   while(a>0)
+   {
+       d[b-1]=a%10;
+       b--;
+       a/=10;
+      
+   }
+   for(;c>0;c--)
+   {
+       b+=d[c-1]*d[c-1];
+   }
+   return b;
+}
+
+
 
 int main()
 {
-    int secim,ogrencisayisi=0;
-    student *ptrofstudent;
-    student *ptr=ptrofstudent;
+    int a,b,c,k,l;
     
-    printf("1--> yeni kayit olustur:\n");
-    printf("2--> ortalamasi en yuksek orenciyi yaz:\n");
-    printf("3--> sinif ortalamasini yaz:\n");
-    printf("4-->kayit guncelle:\n");
-    printf("5--> cikis:\n");
-    scanf("%d",&secim);
     
-    switch(secim)
+    printf("take a number:");
+    scanf("%d",&a);
+    while(a!=89 && a!=1)
     {
-        case 1:     
-            int a;
-            printf("kac ogrenci kayit edeceksiniz:");
-            scanf("%d",&a);
-            
-            printf("%d ogrenci icin alan ayrildi:",a);
-            
-            for(int i=ogrencisayisi;i<a+ogrencisayisi;i++)
-            {
-                printf("ogrencinin ismi:");
-                
-                
-            }
-    
-    }
-    for(int i=0;i<ogrencisayisi;i++)
-    {
+        b=kbasamaklı(a);
+        c=basamaklarvekaresi(a,b);
+        printf("%d.  ",c);
+        
+        a=c;
         
     }
+     printf("\n%d",a);
+
+    
+    
     
     
     
