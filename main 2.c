@@ -1,52 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define student struct students
-//ogrenci kayit uygulaması;
 
-struct students{
-    
-    char *isim;
-    char *soyisim;
-    int numara;
-    int notu;
-};
+// yazılan kelimeyi ve cümleyi tersten yazdırma
+void kelimeleriterstenyazdir(char a[])
+{
+    int b,c;
+    b=strlen(a);
+    for(c=b;c>=0;c--)
+    {
+        if(a[c]==' ' || c==0)
+        {
+            for(int i=c;i<b;i++)
+            {
+                printf("%c",a[i]);
+            }
+            b=c;
+        }
+    }
+}
+
+void cumleyiterstenyazdir(char a[])
+{
+    int c=strlen(a);
+    for(;c>0;c--)
+    {
+        printf("%c",a[c-1]);
+    }
+}
 
 int main()
 {
-    int secim,ogrencisayisi=0;
-    student *ptrofstudent;
-    student *ptr=ptrofstudent;
+    char cumle[100];
+    int a;
     
-    printf("1--> yeni kayit olustur:\n");
-    printf("2--> ortalamasi en yuksek orenciyi yaz:\n");
-    printf("3--> sinif ortalamasini yaz:\n");
-    printf("4-->kayit guncelle:\n");
-    printf("5--> cikis:\n");
-    scanf("%d",&secim);
+    printf("lutfen cumlenizi yaziniz:");
+    fgets(cumle,100,stdin);
     
-    switch(secim)
+    printf("lutfen yapmak istediginiz işlemi giriniz: kelimeleri tersten yazdır için '1' cumleyi tersten yazdırmak için '2' :" );
+    scanf("%d",&a);
+    
+    if(a==1)
     {
-        case 1:     
-            int a;
-            printf("kac ogrenci kayit edeceksiniz:");
-            scanf("%d",&a);
-            
-            printf("%d ogrenci icin alan ayrildi:",a);
-            
-            for(int i=ogrencisayisi;i<a+ogrencisayisi;i++)
-            {
-                printf("ogrencinin ismi:");
-                
-                
-            }
-    
-    }
-    for(int i=0;i<ogrencisayisi;i++)
+        kelimeleriterstenyazdir(cumle);
+    }    
+    else if(a==2)
     {
-        
+       cumleyiterstenyazdir(cumle);
     }
-    
     
     
     return 0;
