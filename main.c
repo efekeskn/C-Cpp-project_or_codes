@@ -1,60 +1,60 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
+#include <time.h>
 
-int kbasamaklı(int a)
-{
-    int b;
-    while(a>0)
-    {
-        a/=10;
-        b++;
+typedef struct queue {
+    int val;
+    struct queue* next;
+} Queue;
+
+Queue* front = NULL;
+Queue* rear = NULL;
+
+void enqueue(int n) {
+    Queue* temp = (Queue*)malloc(sizeof(Queue));
+    if (temp == NULL) {
+        printf("Bellek tahsisi basarisiz.");
+        exit(1);
     }
-    return b;
-    
+    temp->val = n;
+    temp->next = NULL;
+    if (front == NULL)
+        front = rear = temp;
+    else {
+        rear->next = temp;
+        rear = temp;
+    }
 }
 
-int  basamaklarvekaresi(int a,int b)
-{
-    int d[b],c=b;
-   while(a>0)
-   {
-       d[b-1]=a%10;
-       b--;
-       a/=10;
-      
-   }
-   for(;c>0;c--)
-   {
-       b+=d[c-1]*d[c-1];
-   }
-   return b;
+void dequeue() {
+    if (front == NULL) {
+        printf("Queue bos.");
+        exit(1);
+    }
+    printf("Silinen deger: %d\n", front->val);
+    Queue* temp = front;
+    front = front->next;
+    free(temp);
 }
 
+int main() {
+    srand(time(NULL));
 
+    int n = rand() % 10 + 1; // Rasgele 1 ile 10 arasında bir sayı seç
+    int total_time = 0;
 
-int main()
-{
-    int a,b,c,k,l;
-    
-    
-    printf("take a number:");
-    scanf("%d",&a);
-    while(a!=89 && a!=1)
-    {
-        b=kbasamaklı(a);
-        c=basamaklarvekaresi(a,b);
-        printf("%d.  ",c);
-        
-        a=c;
-        
+    for (int i = 0; i < n; i++) {
+        int a = rand() % 5; // Her katta rastgele 0 ile 4 arasında bir sayı seç
+        printf("%d. katta binecek kisi sayisi: %d\n", i + 1, a);
+        enqueue(a);
+        total_time += 2 * a + 3; // Her kişi 2 saniyede biner ve kat araları 3 saniyede çıkar
     }
-     printf("\n%d",a);
 
-    
-    
-    
-    
-    
+    while (front != NULL) {
+        dequeue();
+    }
+
+    printf("\nToplam gecirilen zaman: %d", total_time - 3); // Son kat arası çıkış süresi düzeltiliyor
+
     return 0;
 }
