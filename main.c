@@ -1,54 +1,17 @@
-#include <stdio.h>
+//1 1 2 3 5 8 13 21 34 55 
 #include <stdlib.h>
-#include <string.h>
-
-// yazılan kelimeyi ve cümleyi tersten yazdırma
-void kelimeleriterstenyazdir(char a[])
+#include <stdio.h>
+int fibonacci(int a)
 {
-    int b,c;
-    b=strlen(a);
-    for(c=b;c>=0;c--)
-    {
-        if(a[c]==' ' || c==0)
-        {
-            for(int i=c;i<b;i++)
-            {
-                printf("%c",a[i]);
-            }
-            b=c;
-        }
-    }
-}
-
-void cumleyiterstenyazdir(char a[])
-{
-    int c=strlen(a);
-    for(;c>0;c--)
-    {
-        printf("%c",a[c-1]);
-    }
+    if(a==1 || a==2)
+    return 1;
+   return fibonacci(a-1)+fibonacci(a-2);
 }
 
 int main()
 {
-    char cumle[100];
-    int a;
-    
-    printf("lutfen cumlenizi yaziniz:");
-    fgets(cumle,100,stdin);
-    
-    printf("lutfen yapmak istediginiz işlemi giriniz: kelimeleri tersten yazdır için '1' cumleyi tersten yazdırmak için '2' :" );
-    scanf("%d",&a);
-    
-    if(a==1)
-    {
-        kelimeleriterstenyazdir(cumle);
-    }    
-    else if(a==2)
-    {
-       cumleyiterstenyazdir(cumle);
-    }
-    
-    
+    int a=fibonacci(7);
+
+    printf("%d-",a);
     return 0;
 }
