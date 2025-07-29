@@ -1,72 +1,80 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Bağlı liste düğümü
-struct Node {
-    int data;
-    struct Node* next;
-};
+typedef struct queue{
+    
+    int val;
+    struct queue* next;
+}Queue;
 
-struct Node* front = NULL;
-struct Node* rear = NULL;
+Queue* front=NULL;
+Queue* rear=NULL;
 
-// Yeni bir düğüm oluşturur
-struct Node* newNode(int data) {
-    struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
-    temp->data = data;
-    temp->next = NULL;
+Queue* newnode(int n)
+{
+    Queue* temp=(Queue*)malloc(sizeof(Queue));
+    if(temp==NULL)
+        exit(1);
+    temp->val=n;
+    front=temp;
+    rear=temp;
+    temp->next=NULL;
     return temp;
 }
-
-// Kuyruğa eleman ekler
-void enqueue(int data) {
-    struct Node* temp = newNode(data);
-    if (rear == NULL) {
-        front = rear = temp;
-        return;
-    }
-    rear->next = temp;
-    rear = temp;
+void enqueue(int n)
+{
+    Queue* temp=(Queue*)malloc(sizeof(Queue));
+    if(temp==NULL)
+        exit(1);
+    temp->val=n;
+    temp->next=NULL;
+    rear->next=temp;
+    rear=rear->next;
 }
-
-// Kuyruktan eleman çıkarır ve döndürür
-int dequeue() {
-    if (front == NULL) {
-        printf("Queue is empty\n");
-        return -1;
+int dequeue_and_time()
+{
+    Queue* temp=(Queue*)malloc(sizeof(Queue));
+    int a;
+    
+    if(front==NULL)
+    {
+        printf("queue is empty.");
+        exit(1);
     }
-    struct Node* temp = front;
-    int data = temp->data;
-    front = front->next;
-    if (front == NULL)
-        rear = NULL;
+    temp=front;
+    front=front->next;
+    temp->next=NULL;
+    a=temp->val;
     free(temp);
-    return data;
+    return a;
 }
 
-// Kuyruğun başındaki elemanı döndürür
-int peek() {
-    if (front == NULL) {
-        printf("Queue is empty\n");
-        return -1;
+
+
+int main()
+{
+    int n,zaman,top_zaman=0;
+    
+    printf("lutfen sirada kac kisinin oldugunu yaziniz:");
+    scanf("%d",&n);
+    
+    printf("lutfen 1. kisinin bekleme suresini giriniz (dk):");
+        scanf("%d",&zaman);
+    Queue* que=newnode(zaman);
+    
+    
+    for(int i=1;i<n;i++)
+    {
+        printf("lutfen %d. kisinin bekleme suresini giriniz (dk):",i+1);
+        scanf("%d",&zaman);
+        enqueue(zaman);
     }
-    return front->data;
-}
-
-// Kuyruk boş mu kontrol eder
-int isEmpty() {
-    return (front == NULL);
-}
-
-int main() {
-    enqueue(1);
-    enqueue(2);
-    enqueue(3);
-
-    printf("Dequeued item: %d\n", dequeue());
-    printf("Dequeued item: %d\n", dequeue());
-    printf("Dequeued item: %d\n", dequeue());
-    printf("Dequeued item: %d\n", dequeue());
-
+    for(int i=0;i<n;i++)
+    {
+        top_zaman+=dequeue_and_time();
+    }
+    
+    printf("toplam beklnecek sure:%d",top_zaman);
+    
     return 0;
 }
