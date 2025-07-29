@@ -1,11 +1,17 @@
+//1 1 2 3 5 8 13 21 34 55 
+#include <stdlib.h>
 #include <stdio.h>
+int fibonacci(int a)
+{
+    if(a==1 || a==2)
+    return 1;
+   return fibonacci(a-1)+fibonacci(a-2);
+}
 
-int main() {
-    printf("Bu dosya: %s\n", __FILE__);
-    printf("Bu satır: %d\n", __LINE__);
-    printf("Derleme tarihi: %s\n", __DATE__);
-    printf("Derleme zamanı: %s\n", __TIME__);
-    printf("Fonksiyon adı: %s\n", __func__);
-    
+int main()
+{
+    int a=fibonacci(7);
+
+    printf("%d-",a);
     return 0;
 }
