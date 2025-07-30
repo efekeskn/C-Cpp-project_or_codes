@@ -1,16 +1,23 @@
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
+// su faturasi hesaplama
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-int main()
+void
+main ()
 {
-    printf("Hello World");
+  int tuketilensu;
+  float fatura;
 
-    return 0;
+  printf
+	("lutfen kullanmis oldugunuz su miktarini giriniz (ton cinsinden): ");
+  scanf ("%d", &tuketilensu);
+  if (tuketilensu < 30)
+	fatura = 2.30 * tuketilensu;
+  else
+	fatura = 2.30 * (30) + (tuketilensu - 30) * 3;
+  printf ("bu ayki faturaniz =%.2f tl", fatura);
+
+
+
 }

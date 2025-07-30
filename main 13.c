@@ -1,40 +1,24 @@
-// fibonacci ve tribonacci
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-
-
-
-int
-main ()
+#include <string.h>
+// struct yapısı c programlama
+struct ogrenci
 {
-  int a = 0, b = 1, c, i;
+    char isim[15];
+    char soyisim[15];
+    int yas;
+    int boy;
+    int ıd;
+};
 
 
-
-  printf ("fibonacci\n1. -->0 \n2. -->1\n");
-  for (i = 3; i <= 20; i++)
-	{
-	  c = a + b;
-	  a = b;
-	  b = c;
-	  printf ("%d. -->%d\n", i, c);
-
-	}
-  printf ("\ntribonacci\n1. -->0 \n2. -->1\n3. -->1\n");
-  a = 0;
-  b = 1;
-  c = 1;
-  int d;
-  for (i = 4; i <= 20; i++)
-	{
-	  d = a + b + c;
-	  a = b;
-	  b = c;
-	  c = d;
-	  printf ("%d. -->%d\n", i, d);
-	}
-
-  return 0;
+int main()
+{
+    
+    struct ogrenci ahmet={"ahmet","gedikli",18,178,22296577};
+    
+    printf("%s  %s  %d  %d    %d",ahmet.isim,ahmet.soyisim,ahmet.yas,ahmet.boy,ahmet.ıd);
+    
+    
+    return 0;
 }
