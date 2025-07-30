@@ -1,40 +1,23 @@
-// fibonacci ve tribonacci
-
+// su faturasi hesaplama
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-
-
-int
+void
 main ()
 {
-  int a = 0, b = 1, c, i;
+  int tuketilensu;
+  float fatura;
+
+  printf
+	("lutfen kullanmis oldugunuz su miktarini giriniz (ton cinsinden): ");
+  scanf ("%d", &tuketilensu);
+  if (tuketilensu < 30)
+	fatura = 2.30 * tuketilensu;
+  else
+	fatura = 2.30 * (30) + (tuketilensu - 30) * 3;
+  printf ("bu ayki faturaniz =%.2f tl", fatura);
 
 
 
-  printf ("fibonacci\n1. -->0 \n2. -->1\n");
-  for (i = 3; i <= 20; i++)
-	{
-	  c = a + b;
-	  a = b;
-	  b = c;
-	  printf ("%d. -->%d\n", i, c);
-
-	}
-  printf ("\ntribonacci\n1. -->0 \n2. -->1\n3. -->1\n");
-  a = 0;
-  b = 1;
-  c = 1;
-  int d;
-  for (i = 4; i <= 20; i++)
-	{
-	  d = a + b + c;
-	  a = b;
-	  b = c;
-	  c = d;
-	  printf ("%d. -->%d\n", i, d);
-	}
-
-  return 0;
 }
