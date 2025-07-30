@@ -1,60 +1,36 @@
+//Sayı Tahmin Oyunu
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
-void
-yazdir (float *ptr, int a)
+
+int main()
 {
-  printf ("\n\n|");
-  for (int i = 0; i < a * (a+1); i++)
-	{
-
-	  printf ("%.0f    ", ptr[i]);
-
-	  if ((i + 1) % (a+1)  == 0)
-	  {
-	       i++;
-	      printf (" =  %0.f |\n|",ptr[i]);
-	     
-	      
-	  }	
-
-
-	}
-}
-
-void
-sifirla (float *ptr, int a)
-{
-
-}
-
-
-int
-main ()
-{
-  srand (time (NULL));
-
-  int a;
-
-  printf ("Lutfen bir kare matris icin bir sayi giriniz: ");
-  scanf ("%d", &a);
-
-  float matris[a][a+1];
-
-  for (int num1 = 0; num1 < a; num1++)
-	{
-	  for (int num2 = 0; num2 < a; num2++)
-		{
-		  matris[num1][num2] = 1.0 * (rand () % 9 + 1);
-		  printf (" %.0f   ", matris[num1][num2]);
-		}
-      matris[num1][a + 1]=1.0*(rand()%9+1);
-	  printf ("=    %.0f\n",matris[num1][a+1]);
-	}
-
-
-  yazdir (&matris[0][0], a);
-
-  return 0;
+    srand(time(NULL));
+    
+    int a,b,c=0;
+    
+    a=rand()%99+1;
+    while(true)
+    {
+        printf("lütfen sayıyı tahmin ediniz:");
+        scanf("%d",&b);
+        c++;
+        if(a==b)
+        {
+          printf("tebrikler tahmininiz doğru - deneme sayısı=  %d",c);
+          return 0;
+        }
+        else if(a-b<5 && b-a<5)
+        printf("çok yaklaştınız");
+        else if(a-b<15 && b-a<15)
+        printf("yakın");
+        else
+        printf("uzak");
+        
+        printf("\n");
+    }
+    
+    
 }
