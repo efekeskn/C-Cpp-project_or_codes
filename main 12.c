@@ -1,16 +1,26 @@
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#define ogrenci struct student
+
+struct student {
+    
+    char *isim;
+    char *soyisim;
+    int yas;
+    int kilo;
+    float ortalama;
+    
+};
 
 int main()
 {
-    printf("Hello World");
-
+    
+    ogrenci ahmet={"ahmet","keskin",21,78,78};
+    
+    printf("isim-->%s soyisim-->%s yas--> %d  kilo--> %d  ortalama--> %.1f",ahmet.isim,ahmet.soyisim,ahmet.yas,ahmet.kilo,ahmet.ortalama);
+    
+    
     return 0;
 }
