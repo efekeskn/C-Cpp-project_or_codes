@@ -1,66 +1,45 @@
-// ebob ekok
-#include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include <string.h>
+#include <stdio.h>
 
-void
-ekok (int a, int b)
+struct str{
+    int ad;
+    struct str *next;
+};
+
+void SonaEkle(struct str* head,struct str* ekle)
 {
-  int c, okek = 1, d;
-  d = (a > b ? a : b);
-  for (c = 2; c <= d; c++)
-	{
-	  if (a % c == 0 && b % c == 0)
-		{
-		  okek *= c;
-		  a /= c;
-		  b /= c;
-		  c--;
-		}
-	  else if (a % c == 0)
-		{
-		  okek *= c;
-		  a /= c;
-		  c--;
-		}
-	  else if (b % c == 0)
-		{
-		  okek *= c;
-		  b /= c;
-		  c--;
-		}
-
-	}
-  printf ("ekok--->%d\n", okek);
-}
-
-void
-ebob (int a, int b)
-{
-  int c, obeb=1, d;
-  d = a < b ? a : b;
-  for (c=2;c<=d;c++)
-  {
-      if(a%c==0 && b%c==0)
-      {
-        obeb*=c;  
-        a/=c;
-        b/=c;
-        c--;
-      }
-  }
-  printf("ebob--->%d",obeb);
+    struct str* current=head;
     
+    while(current->next!=NULL)
+        current=current->next;
+    current->next=ekle;
 }
-	int main ()
-  {
-	int a, b;
 
-	printf ("lC<tfen 2 sayi giriniz:");
-	scanf ("%d%d", &a, &b);
-	ekok (a, b);
-	ebob (a, b);
-
-
-	return 0;
-  }
+int main()
+{
+    struct str * head=NULL,*ptr=NULL,*strs=NULL;
+    
+    head=(struct str*)malloc(sizeof(struct str));
+    ptr=head;
+    strs=head;
+    
+    for(int i=0;i<10;i++)
+    {
+        head->ad=i+1;
+        head->next=(struct str*)malloc(sizeof(struct str));
+        head=head->next;
+    }
+    SonaEkle(ptr,strs);
+    
+    while(ptr->next!=NULL)
+    {
+        printf(" deger-->%d\n",ptr->ad);
+        ptr=ptr->next;
+    }
+    
+    free(ptr);
+    free(head);
+    free(strs);
+    return 0;
+}
