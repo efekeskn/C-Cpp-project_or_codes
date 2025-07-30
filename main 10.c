@@ -1,23 +1,31 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
-// c programlama alıştırmaları
+
+struct araba{
+    
+    char marka[20];
+    char plaka[10];
+    int kilometre;
+    int model;
+    int tekerleksayisi;
+    int vitessayisi;
+    
+    
+};
+
 
 int main()
 {
-    short sayi4;
-    int  sayi1=188;
-    int bosluk=' ';
-    char efe[199];
-    char e[20]="9799";
-    sayi1=atoi(e);// atol-->long long  atof-->float   
-    printf("%d",sayi1);
-    
-    long long sayi2=30;
+    struct araba  araba1= { "ferrary" , "ADN3150SR" ,300,1999,6,6};
+      araba1.model=166;
+      strcpy(araba1.marka,"ferrary");
+    printf("  %d  %d  ", araba1.kilometre, araba1.model);
+  
     
     
     
-
+    
     return 0;
 }
