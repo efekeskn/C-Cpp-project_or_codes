@@ -1,70 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void sirala(int kdizi[],int a)
+// yazılan kelimeyi ve cümleyi tersten yazdırma
+void kelimeleriterstenyazdir(char a[])
 {
-    int b,c,buyuk;
-    
-    for(b=0;b<a;b++)
+    int b,c;
+    b=strlen(a);
+    for(c=b;c>=0;c--)
     {
-        for(c=0;c<a;c++)
+        if(a[c]==' ' || c==0)
         {
-            if(kdizi[c]>kdizi[c+1])
+            for(int i=c;i<b;i++)
             {
-                buyuk=kdizi[c];
-                kdizi[c]=kdizi[c+1];
-                kdizi[c+1]=buyuk;
+                printf("%c",a[i]);
             }
+            b=c;
         }
     }
-    printf("su anki dizi=");
-    for(b=0;b<=a;b++)
-    {
-        printf("%d ",kdizi[b]);
-    }
 }
 
-int pozitifmi(int a)
+void cumleyiterstenyazdir(char a[])
 {
-    if(a<=0)
-    return 4;
-    else 
-    return 1;
-}
-
-int esitmi(int dizi[],int a)
-{
-    int b;
-    for(b=0;b<a;b++)
+    int c=strlen(a);
+    for(;c>0;c--)
     {
-        if(dizi[a]==dizi[b])
-        return 11;
+        printf("%c",a[c-1]);
     }
-    return 1;
 }
 
 int main()
 {
-    int dizi[10],a;
+    char cumle[100];
+    int a;
     
-    for(a=0;a<10;a++)
+    printf("lutfen cumlenizi yaziniz:");
+    fgets(cumle,100,stdin);
+    
+    printf("lutfen yapmak istediginiz işlemi giriniz: kelimeleri tersten yazdır için '1' cumleyi tersten yazdırmak için '2' :" );
+    scanf("%d",&a);
+    
+    if(a==1)
     {
-        printf("\n%d. sayiyi giriniz:",a+1);
-        scanf("%d",&dizi[a]);
-        if(pozitifmi(dizi[a])==4)
-        {
-            printf("pozitiif sayi giriniz");
-            a--;
-        }
-        else if(esitmi(dizi,a)==11)
-        {
-            printf("ayni sayiyi girmeyin");
-            a--;
-        }
-        else
-        sirala(dizi,a);
-        
+        kelimeleriterstenyazdir(cumle);
+    }    
+    else if(a==2)
+    {
+       cumleyiterstenyazdir(cumle);
     }
-
+    
+    
     return 0;
 }
